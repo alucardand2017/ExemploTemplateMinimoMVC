@@ -1,3 +1,4 @@
+using AULA08MVCTEMPLATEMINIMO.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AULA08MVCTEMPLATEMINIMO.Controllers;
@@ -9,8 +10,54 @@ public class HomeController : Controller
         return View();
     }
 
-        public IActionResult Cadastrar()
+    [HttpGet]
+    public IActionResult Cadastrar(int? id)
     {
-        return View("FormUsuario");
+        try
+        {
+            if(id.HasValue && Usuario.Listagem.Any(u=>u.Id == id))
+            {
+                var usuario = Usuario.Listagem.Single(p=> p.Id == id);
+            return View(usuario);
+            }
+            return View();
+        }
+        catch( Exception e)
+        {
+            throw new ArgumentException("Erro na tentativa de enviar para a View. Erro: " + e.Message);
+        }
     }
+
+    [HttpPost]
+    public IActionResult Cadastrar(Usuario usuario){
+        Usuario.Salvar(usuario);
+        return RedirectToAction("Usuarios");
+    }
+
+    public IActionResult Usuarios()
+    {
+        
+        return View(Usuario.Listagem);
+    }
+    [HttpGet]
+    public IActionResult Excluir(int? id)
+    {
+        var usuario = Usuario.Listagem.First(a=>a.Id == id);
+        if(usuario == null)
+            return RedirectToAction("Usuarios");
+        else{
+            return View(usuario);
+        }
+    }
+
+    [HttpPost]
+     public IActionResult Excluir(Usuario usuario)
+    {
+
+        Usuario.Excluir(usuario.Id);
+        
+        return View("Usuarios", Usuario.Listagem);
+
+    }
+
 }

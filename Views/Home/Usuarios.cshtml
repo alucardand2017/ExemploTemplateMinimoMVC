@@ -1,0 +1,43 @@
+@model IQueryable<AULA08MVCTEMPLATEMINIMO.Models.Usuario>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, inicial-scale=1.0">
+    <link rel="stylesheet" href="/lib/bootstrap5/dist/css/bootstrap.css">
+    <title>Título da página</title>
+</head>
+<body>
+   <div class="container">
+       <h1 class="text-primary">Usuários</h1>
+       <hr>
+       <p>
+        CRUD PARA ASP.NETCORE
+       </p>
+       <a href="/Home/Index" class="btn btn-primary">Voltar</a>
+       <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tboby>
+        @foreach(var usuario in Model)
+        {
+            <tr>
+                <td>@usuario.Nome</td>
+                <td>@usuario.Email</td>
+                <td><a asp-action="Cadastrar" asp-route-id="@usuario.Id" class="btn btn-secondary">Alterar</a></td>
+                <td><a asp-action="Excluir" asp-route-id="@usuario.Id" class="btn btn-danger">Excluir</a></td>
+            </tr>
+        }
+        </tboby>
+       </table>
+   </div>
+</body>
+</html>
