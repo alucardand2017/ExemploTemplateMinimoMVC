@@ -55,11 +55,8 @@ public class HomeController : Controller
     [HttpPost]
      public IActionResult Excluir(Usuario usuario)
     {
-
-        Usuario.Excluir(usuario.Id);
-        
-        return View("Usuarios", Usuario.Listagem);
-
+        TempData["Excluiu"] = Usuario.Excluir(usuario.Id);
+        return RedirectToAction("Usuarios");
     }
 
 }

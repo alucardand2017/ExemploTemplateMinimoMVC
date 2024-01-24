@@ -4,6 +4,23 @@
     ViewBag.Subtitulo = "Listagem";
     }
    
+   @{
+    if(TempData.ContainsKey("Excluiu"))
+    {
+        var excluiu = (bool)TempData["Excluiu"];
+        if(excluiu){
+            <div class="alert alert-success mt-3 alert-dismissible fade show" role="alert">
+                Usuário Excluído com <strong>Sucesso!</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" ></button>
+            </div>
+        }else{
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                Não foi possível ecluir o usuário!
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>   
+        }
+    }
+   }
        <h1 class="text-primary">Usuários</h1>
        <h2 class="text-primary">Usuários Cadastrados: @ViewBag.QntUsuarios</h2>
        <hr>
@@ -35,4 +52,8 @@
         </tboby>
        </table>
   
+  @section Scripts {
+    <script src="/lib/bootstrap5/dist/js/bootstrap.js"></script>
+
+  }
 

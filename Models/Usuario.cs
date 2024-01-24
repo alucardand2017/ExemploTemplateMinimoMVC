@@ -36,11 +36,12 @@ public class Usuario
         }
     }
 
-    public static void Excluir(int id)
+    public static bool Excluir(int id)
     {
-        var usuario = listagem.First(a=>a.Id == id);
+        var usuario = listagem.Find(a=>a.Id == id);
         if(usuario != null)
-            listagem.Remove(usuario);
+            return listagem.Remove(usuario);
+        return false;
     }
     static Usuario()
     {
