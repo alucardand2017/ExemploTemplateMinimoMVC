@@ -34,11 +34,13 @@ public class HomeController : Controller
         return RedirectToAction("Usuarios");
     }
 
+    [HttpGet]
     public IActionResult Usuarios()
     {
-        
+        ViewBag.QntUsuarios = Usuario.Listagem.Count();
         return View(Usuario.Listagem);
     }
+    
     [HttpGet]
     public IActionResult Excluir(int? id)
     {

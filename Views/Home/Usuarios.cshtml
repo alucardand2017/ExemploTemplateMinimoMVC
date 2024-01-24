@@ -1,23 +1,19 @@
-@model IQueryable<AULA08MVCTEMPLATEMINIMO.Models.Usuario>
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model IQueryable<Usuario>
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, inicial-scale=1.0">
-    <link rel="stylesheet" href="/lib/bootstrap5/dist/css/bootstrap.css">
-    <title>Título da página</title>
-</head>
-<body>
-   <div class="container">
+@{
+    ViewBag.Subtitulo = "Listagem";
+    }
+   
        <h1 class="text-primary">Usuários</h1>
+       <h2 class="text-primary">Usuários Cadastrados: @ViewBag.QntUsuarios</h2>
        <hr>
        <p>
         CRUD PARA ASP.NETCORE
        </p>
-       <a href="/Home/Index" class="btn btn-primary">Voltar</a>
+       <div class="col-6">
+           <a asp-action="Cadastrar" asp-controller="Home" class="btn btn-success">Cadastrar</a>
+           <a asp-action="Index" asp-controller="Home" class="btn btn-primary">Voltar</a>
+       </div>
        <table class="table">
         <thead>
             <tr>
@@ -38,6 +34,5 @@
         }
         </tboby>
        </table>
-   </div>
-</body>
-</html>
+  
+

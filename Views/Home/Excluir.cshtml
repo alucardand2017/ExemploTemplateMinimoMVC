@@ -1,29 +1,18 @@
-@model AULA08MVCTEMPLATEMINIMO.Models.Usuario
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@model Usuario
 
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, inicial-scale=1.0">
-    <link rel="stylesheet" href="/lib/bootstrap5/dist/css/bootstrap.css">
-    <title>Título da página</title>
-</head>
-<body>
-   <div class="container">
-       <h1 class="text-primary">Cadastro de Usuário</h1>
-       <hr>
-       <h2>
-        Confirmar Exclusão do usuário @Model.Nome?
-       </h2>
-            <form method="post" class="w-25">
-                <input type="hidden" asp-for="Id">
-                <a asp-action="Usuarios" asp-controller="Home" class="btn btn-secondary">Voltar</a>
-                <button asp-action="Excluir" asp-controller="Home" class="btn btn-danger">Excluir</button>
-            </form>  
-        </tboby>
-       </table>
-   </div>
-</body>
-</html>
+@{
+    ViewBag.Subtitulo = "Exclusão";
+    }
+
+
+       
+           <h2>
+            Confirmar Exclusão do usuário @Model.Nome?
+           </h2>
+                <form method="post" class="w-25">
+                    <input type="hidden" asp-for="Id">
+                    <a asp-action="Usuarios" asp-controller="Home" class="btn btn-secondary">Voltar</a>
+                    <button asp-action="Excluir" asp-controller="Home" class="btn btn-danger">Excluir</button>
+                </form>
+       
+       
